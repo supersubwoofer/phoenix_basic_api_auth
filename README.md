@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/supersubwoofer/phoenix_basic_api_auth.svg?branch=master)](https://travis-ci.org/supersubwoofer/phoenix_basic_api_auth)
+
 # MyApp
 
 ## Descriptions
