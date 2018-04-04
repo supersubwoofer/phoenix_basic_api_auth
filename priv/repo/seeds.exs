@@ -9,3 +9,20 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+{:ok, _user} = MyApp.Accounts.create_user(%{
+  email: "writer@somedomain.com",
+  password: "qweqweqwe",
+  permissions: %{default: [:read_users, :write_users]}
+})
+
+{:ok, _user} = MyApp.Accounts.create_user(%{
+  email: "reader@somedomain.com",
+  password: "qweqweqwe",
+  permissions: %{default: [:read_users]}
+})
+
+{:ok, _user} = MyApp.Accounts.create_user(%{
+  email: "rubbish@somedomain.com",
+  password: "qweqweqwe",
+  permissions: %{default: []}
+})
