@@ -2,7 +2,7 @@
 
 ## Descriptions
 
-Phoenix App with basic authentication and access control [1]
+Phoenix App with basic API authentication and access control [1]
 
 ## Steps
 
