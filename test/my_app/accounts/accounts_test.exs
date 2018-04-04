@@ -1,6 +1,7 @@
 defmodule MyApp.AccountsTest do
   use MyAppWeb.ConnCase
   import MyApp.Factory
+  alias MyApp.Factory.PasswordFactory
   alias MyApp.Accounts
 
   test "list_users/0" do
@@ -19,7 +20,7 @@ defmodule MyApp.AccountsTest do
 
   test "get_user_by_email_and_password/2" do
     user = insert(:user)
-    queried_user = Accounts.get_user_by_email_and_password(user.email, unencrypted_password())
+    queried_user = Accounts.get_user_by_email_and_password(user.email, %PasswordFactory{}.password)
 
     assert queried_user == user
   end
