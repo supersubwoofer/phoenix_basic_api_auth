@@ -7,11 +7,12 @@ defmodule MyApp.Accounts.User do
     field :email, :string
     field :encrypted_password, :string
     field :password, :string, virtual: true
+    field :permissions, :map
 
     timestamps()
   end
 
-  @required_fields ~w(email password)
+  @required_fields ~w(email password permissions)
   @optional_fields ~w(encrypted_password)
 
   @doc """
