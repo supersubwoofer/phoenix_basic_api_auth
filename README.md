@@ -1,24 +1,29 @@
-[![Build Status](https://travis-ci.org/supersubwoofer/phoenix_basic_json_api.svg?branch=master)](https://travis-ci.org/supersubwoofer/phoenix_basic_json_api)
-
 # MyApp
-
-Create a basic Phoenix User JSON API [1][2][3]
 
 ## Descriptions
 
-Steps:
+Phoenix App with basic authentication and access control [1]
 
-1. Define Context
-    * accounts
-        * accounts.ex
-        * user.ex
-2. Write Tests !!!
-    1. UserControllerTest
-    2. UserViewTest
-3. Create User module (schema) |> create migration file |> database migration
-4. Seed users to database if necessary
-5. Create Accounts module (context) as business logic API
-6. Add new route |> create UserController |> create UserView
+## Steps
+
+1. Authentication and access control
+    1. Identify user in system
+        1. Fork from repo [Phoenix app - basic User JSON API](https://github.com/supersubwoofer/phoenix_basic_json_api)
+        2. Migrate User table with field "permissions: map”
+        3. Seed users with different permissions
+        4. Write Tests !!! then implement the functions
+            1. MyApp.Accounts.list_users/0
+            2. MyApp.Accounts.get_user/1
+            3. MyApp.Accounts.get_user_by_email_and_password/2
+    2. Todo - Authenticate user over HTTP
+        1. Add dependences
+            1. [Ueberauth](https://github.com/ueberauth/ueberauth) for authentication - use [strategy](https://github.com/ueberauth/ueberauth/wiki/List-of-Strategies) [ueberauth_identity](https://github.com/ueberauth/ueberauth_identity)
+            2. [Guardian](https://github.com/ueberauth/guardian) to issue JWT [2]
+        2. Create MyApp.Guardian module to issue JWT
+        3. Create AuthenticationController
+    3. Todo - Authorize resources access credentials
+        1. Create Guardian authentication pipline
+        2. Apply Guardian.Permissions.Bitwise to control resources access
 
 ## To start your Phoenix server:
 
@@ -33,6 +38,11 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
 
 ## Reference
 
-* [1] Paul Smith, (2017) [Building and testing a Phoenix JSON API](https://robots.thoughtbot.com/building-a-phoenix-json-api)
-* [2] Chris McCord (2017) [Phoenix 1.3.0 released](http://phoenixframework.org/blog/phoenix-1-3-0-released)
-* [3] David Bernheisel (2017) [Lessons From Using Phoenix 1.3](https://robots.thoughtbot.com/lessons-from-using-phoenix-1-3#experience)
+* [1] Nathan Goddard, (2018) [Ueberauth and guardian setup for a Phoenix rest API](http://blog.nathansplace.co.uk/2018/ueberauth-and-guardian)
+* [2] Eric Oestrich, (2016) [Generating a Guardian Secret Key](https://blog.oestrich.org/2016/12/elixir-guardian-secret-key/)
+
+## Reading
+
+* [i] Ed Lima, (2017) [Secure API Access with Amazon Cognito Federated Identities, Amazon Cognito User Pools, and Amazon API Gateway](https://aws.amazon.com/blogs/compute/secure-api-access-with-amazon-cognito-federated-identities-amazon-cognito-user-pools-and-amazon-api-gateway/)
+* [ii] Ueberauth docs, (v0.5.0) [Ueberauth API Reference](https://hexdocs.pm/ueberauth/api-reference.html)
+* [iii] Guardian docs, (v1.0.1) [Guardian API Reference](https://hexdocs.pm/guardian/api-reference.html)
