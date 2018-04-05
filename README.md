@@ -17,7 +17,7 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
 
 ## Roadmap
 
-1. Authentication and access control
+Authentication and access control
     1. Identify user in system
         1. Fork from repo [Phoenix app - basic User JSON API](https://github.com/supersubwoofer/phoenix_basic_json_api)
         2. Migrate User table with field "permissions: map”
