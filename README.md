@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/supersubwoofer/phoenix_basic_api_auth.svg?branch=master)](https://travis-ci.org/supersubwoofer/phoenix_basic_api_auth)
 
-# MyApp
+# Phoenix Basic API Auth
 
 Phoenix App with basic API authentication and access control [1]
 
