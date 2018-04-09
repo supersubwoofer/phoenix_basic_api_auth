@@ -8,7 +8,7 @@ defmodule MyAppWeb.UserController do
   end
 
   def show(conn, %{"id" => id}) do
-    user = Accounts.get_user(id)
+    user = Accounts.get_user_by_id(id)
     render(conn, "show.json", user: user)
   end
 end

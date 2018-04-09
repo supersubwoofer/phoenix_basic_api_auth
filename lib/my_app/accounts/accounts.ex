@@ -6,7 +6,7 @@ defmodule MyApp.Accounts do
     Repo.all(User)
   end
 
-  def get_user(id) do
+  def get_user_by_id(id) do
     Repo.get!(User, id)
   end
 
