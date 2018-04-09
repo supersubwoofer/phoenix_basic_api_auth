@@ -44,7 +44,10 @@ defmodule MyApp.Mixfile do
       {:ex_machina, "~> 2.2", only: :test},
       {:comeonin, "~> 4.0.0"}, 
       {:pbkdf2_elixir, "~> 0.12"},
-      {:poison, "~> 3.1"}
+      {:poison, "~> 3.1"},
+      {:ueberauth, "~> 0.5.0"},
+      {:ueberauth_identity, "~> 0.2.3"},
+      {:guardian, "~> 1.0"}
     ]
   end
 
