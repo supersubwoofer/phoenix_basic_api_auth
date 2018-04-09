@@ -27,12 +27,15 @@ Setup authentication and access control
         1. MyApp.Accounts.list_users/0
         2. MyApp.Accounts.get_user/1
         3. MyApp.Accounts.get_user_by_email_and_password/2
-2. Todo - Authenticate user over HTTP
+
+2. Authenticate user over HTTP
     1. Add dependences
         1. [Ueberauth](https://github.com/ueberauth/ueberauth) for authentication - use [strategy](https://github.com/ueberauth/ueberauth/wiki/List-of-Strategies) [ueberauth_identity](https://github.com/ueberauth/ueberauth_identity)
         2. [Guardian](https://github.com/ueberauth/guardian) to issue JWT [2]
     2. Create MyApp.Guardian module to issue JWT
-    3. Create AuthenticationController
+    3. Create endpoint /api/auth/identity/callback and AuthenticationController
+    4. Write tests for the endpoint
+
 3. Todo - Authorize resources access credentials
     1. Create Guardian authentication pipline
     2. Apply Guardian.Permissions.Bitwise to control resources access
