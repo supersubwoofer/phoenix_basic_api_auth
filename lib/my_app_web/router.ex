@@ -22,6 +22,7 @@ defmodule MyAppWeb.Router do
   scope "/api", MyAppWeb do
     pipe_through :api
 
-    resources "/users", UserController, except: [:new, :edit]
+    resources "/users", UserController, only: [:index]
+    resources "/users", UserController, only: [:show]
   end
 end
