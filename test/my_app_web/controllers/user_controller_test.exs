@@ -15,7 +15,7 @@ defmodule MyAppWeb.UserControllerTest do
     conn = build_conn()
     user = insert(:user)
 
-    conn = get conn, user_path(conn, :show, user)
+    conn = get conn, user_path(conn, :show, user.id)
 
     assert json_response(conn, 200) == render_json("show.json", user: user)
   end

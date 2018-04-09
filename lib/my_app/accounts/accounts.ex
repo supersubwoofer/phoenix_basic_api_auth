@@ -1,7 +1,7 @@
 defmodule MyApp.Accounts do
   alias MyApp.Repo
   alias MyApp.Accounts.User
-
+  
   def list_users do
     Repo.all(User)
   end
