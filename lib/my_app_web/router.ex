@@ -21,6 +21,10 @@ defmodule MyAppWeb.Router do
 
   scope "/api", MyAppWeb do
     pipe_through :api
+    
+    scope "/auth" do
+      post "/identity/callback", AuthenticationController, :identity_callback
+    end
 
     resources "/users", UserController, only: [:index]
     resources "/users", UserController, only: [:show]

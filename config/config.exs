@@ -25,3 +25,26 @@ config :logger, :console,
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
+
+# Configures Ueberauth
+ config :ueberauth, Ueberauth,
+    base_path: "/api/auth",
+    providers: [
+      identity: {Ueberauth.Strategy.Identity, [
+        callback_methods: ["POST"],
+        callback_path: "/api/auth/identity/callback",
+        nickname_field: :email,
+        param_nesting: "user",
+        uid_field: :email
+      ]}
+    ]
+
+# Configures Guardian
+config :my_app, MyApp.Accounts.Guardian,
+    issuer: "MyApp",
+    secret_key: "LvigLS6blw925TEt6qCSIdSwYszIYoKYK3QD/ypdjvRrUXMySyeoxfKni6554YYi",
+
+    # We will get round to using these permissions at the end
+    permissions: %{
+      default: [:read_users, :write_users]
+    }
