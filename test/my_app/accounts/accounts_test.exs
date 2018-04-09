@@ -27,7 +27,7 @@ defmodule MyApp.AccountsTest do
   
   test "get_user_by_email_and_password/2 with wrong password" do
     user = insert(:user)
-    result = Accounts.get_user_by_email_and_password(user.email, %PasswordFactory{}.password <> "makes it wrong")
+    result = Accounts.get_user_by_email_and_password(user.email, %PasswordFactory{}.wrong_password <> "makes it wrong")
 
     assert result == {:error, :unauthenticated}
   end

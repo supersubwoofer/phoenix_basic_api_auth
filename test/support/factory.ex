@@ -3,7 +3,9 @@ defmodule MyApp.Factory do
   alias MyApp.Accounts.User
 
   defmodule PasswordFactory do
-    defstruct password: "unencrypted_password", encrypted_password: Comeonin.Pbkdf2.hashpwsalt("unencrypted_password")
+    defstruct password: "unencrypted_password", 
+    encrypted_password: Comeonin.Pbkdf2.hashpwsalt("unencrypted_password"), 
+    wrong_password: "wrong_password"
   end
 
   def user_factory do
