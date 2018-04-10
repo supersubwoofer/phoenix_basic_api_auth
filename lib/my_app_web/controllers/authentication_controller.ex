@@ -16,7 +16,6 @@
         {:ok, user} ->
           {:ok, jwt, _full_claims} = 
           Accounts.Guardian.encode_and_sign(user, %{})
-          # {:ok, "debug_jwt", "debug_claims"}
 
           conn
           |> put_resp_header("authorization", "Bearer #{jwt}")
