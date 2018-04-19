@@ -22,10 +22,6 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
-# Import environment specific config. This must remain at the bottom
-# of this file so it overrides the configuration defined above.
-import_config "#{Mix.env}.exs"
-
 # Configures Ueberauth
  config :ueberauth, Ueberauth,
     base_path: "/api/auth",
@@ -48,3 +44,12 @@ config :my_app, MyApp.Accounts.Guardian,
     permissions: %{
       default: [:read_users, :write_users]
     }
+
+# Configure the authentication plug pipeline
+config :my_app, MyAppWeb.Plug.AuthAccessPipeline,
+  module: MyApp.Guardian,
+  error_handler: MyAppWeb.Plug.AuthErrorHandler
+
+# Import environment specific config. This must remain at the bottom
+# of this file so it overrides the configuration defined above.
+import_config "#{Mix.env}.exs"

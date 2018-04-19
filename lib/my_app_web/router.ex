@@ -12,6 +12,10 @@ defmodule MyAppWeb.Router do
   pipeline :api do
     plug :accepts, ["json"]
   end
+  
+  pipeline :authenticated do
+    plug MyAppWeb.Plug.AuthAccessPipeline
+  end
 
   scope "/", MyAppWeb do
     pipe_through :browser # Use the default browser stack
@@ -26,7 +30,9 @@ defmodule MyAppWeb.Router do
       post "/identity/callback", AuthenticationController, :identity_callback
     end
 
+    pipe_through :authenticated
     resources "/users", UserController, only: [:index]
     resources "/users", UserController, only: [:show]
   end
+
 end
