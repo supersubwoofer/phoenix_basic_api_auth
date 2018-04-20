@@ -36,9 +36,10 @@ Setup authentication and access control
     3. Create endpoint /api/auth/identity/callback and AuthenticationController
     4. Write tests for the endpoint
 
-3. Todo - Authorize resources access credentials
+3. Authorize resources access credentials
     1. Create Guardian authentication pipline
-    2. Apply Guardian.Permissions.Bitwise to control resources access
+    2. Todo - Apply Guardian.Permissions.Bitwise to control resources access
+    3. Todo - Rewrite Old tests. Old tests do not work after access control
 
 ## Reference
 
