@@ -25,7 +25,7 @@
         {:error, _reason} ->
           conn
           |> put_status(401)
-          |> json(%{message: "user not found"})
+          |> json(%{message: "unidentified"})
       end
     end
   end

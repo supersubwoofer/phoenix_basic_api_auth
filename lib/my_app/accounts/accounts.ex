@@ -6,8 +6,8 @@ defmodule MyApp.Accounts do
     Repo.all(User)
   end
 
-  def get_user_by_id(id) do
-    Repo.get!(User, id)
+  def get_user_by_email(email) do
+    Repo.get_by!(User, email: email)
   end
 
   def get_user_by_email_and_password(nil, _password), do: {:error, :unauthenticated}
@@ -16,7 +16,7 @@ defmodule MyApp.Accounts do
   def get_user_by_email_and_password(_email, ""), do: {:error, :unauthenticated}
 
   def get_user_by_email_and_password(email, password) do
-    with %User{} = user <- Repo.get_by!(User, email: email),
+    with %User{} = user <- get_user_by_email(email),
           true <- Comeonin.Pbkdf2.checkpw(password, user.encrypted_password) do
       {:ok, user}
     else

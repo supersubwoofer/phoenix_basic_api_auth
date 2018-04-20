@@ -11,9 +11,9 @@ defmodule MyApp.AccountsTest do
     assert result == [user]
   end
 
-  test "get_user_by_id/1" do
+  test "get_user_by_email/1" do
     user = insert(:user)
-    result = Accounts.get_user_by_id(user.id)
+    result = Accounts.get_user_by_email(user.email)
 
     assert result == user
   end

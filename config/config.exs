@@ -39,7 +39,6 @@ config :logger, :console,
 config :my_app, MyApp.Accounts.Guardian,
     issuer: "MyApp",
     secret_key: "LvigLS6blw925TEt6qCSIdSwYszIYoKYK3QD/ypdjvRrUXMySyeoxfKni6554YYi",
-
     # We will get round to using these permissions at the end
     permissions: %{
       default: [:read_users, :write_users]
@@ -47,7 +46,7 @@ config :my_app, MyApp.Accounts.Guardian,
 
 # Configure the authentication plug pipeline
 config :my_app, MyAppWeb.Plug.AuthAccessPipeline,
-  module: MyApp.Guardian,
+  module: MyApp.Accounts.Guardian,
   error_handler: MyAppWeb.Plug.AuthErrorHandler
 
 # Import environment specific config. This must remain at the bottom
