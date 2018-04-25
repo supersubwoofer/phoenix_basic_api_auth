@@ -41,7 +41,7 @@ config :my_app, MyApp.Accounts.Guardian,
     secret_key: "LvigLS6blw925TEt6qCSIdSwYszIYoKYK3QD/ypdjvRrUXMySyeoxfKni6554YYi",
     # We will get round to using these permissions at the end
     permissions: %{
-      default: [:read_users, :write_users]
+      default: [:read_users, :manage_users]
     }
 
 # Configure the authentication plug pipeline

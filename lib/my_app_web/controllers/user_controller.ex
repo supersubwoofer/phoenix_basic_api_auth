@@ -4,7 +4,7 @@ defmodule MyAppWeb.UserController do
   alias MyApp.Accounts.User
   
   plug Guardian.Permissions.Bitwise, ensure: %{default: [:read_users]}
-  plug Guardian.Permissions.Bitwise, [ensure: %{default: [:write_users]}] when action in [:create, :update, :delete]
+  plug Guardian.Permissions.Bitwise, [ensure: %{default: [:manage_users]}] when action in [:create, :update, :delete]
 
   def index(conn, _params) do
     users = Accounts.list_users()
