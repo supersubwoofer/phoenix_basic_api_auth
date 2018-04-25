@@ -38,8 +38,8 @@ Setup authentication and access control
     5. Create Guardian authentication pipline to check valid authication token exist in request header 
 
 3. Authorize resources access credentials
-    2. Apply Guardian.Permissions.Bitwise to control resources access
-    3. Todo - Rewrite Old tests. Old tests do not work after access control
+    1. Apply Guardian.Permissions.Bitwise to control resources access
+    2. Todo - Rewrite Old tests. Old tests do not work after access control
 
 ## Reference
 
