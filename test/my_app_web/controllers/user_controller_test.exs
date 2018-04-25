@@ -13,7 +13,7 @@ defmodule MyAppWeb.UserControllerTest do
   test "#show renders a single user" do
     user = insert(:user)
     conn = build_conn()
-    conn = get conn, user_path(conn, :show, user.id)
+    conn = get conn, user_path(conn, :show, user.email)
 
     assert json_response(conn, 200) == render_json("show.json", user: user)
   end

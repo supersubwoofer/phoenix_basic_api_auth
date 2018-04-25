@@ -25,7 +25,7 @@ defmodule MyAppWeb.EndpointTest do
               "{\"user\": {\"email\": \"#{user.email}\", \"password\": \"#{%PasswordFactory{}.wrong_password}\"}}"
               )
 
-    assert json_response(conn, 401) == %{"message" => "user not found"}
+    assert json_response(conn, 401) == %{"message" => "unidentified"}
   end
 
   test "#reject an identity request without password" do
@@ -37,7 +37,7 @@ defmodule MyAppWeb.EndpointTest do
               "{\"user\": {\"email\": \"#{user.email}\"}}"
               )
 
-    assert json_response(conn, 401) == %{"message" => "user not found"}
+    assert json_response(conn, 401) == %{"message" => "unidentified"}
   end
 
   test "#reject an identity request without email and password" do
@@ -48,6 +48,6 @@ defmodule MyAppWeb.EndpointTest do
               "/api/auth/identity/callback"
               )
 
-    assert json_response(conn, 401) == %{"message" => "user not found"}
+    assert json_response(conn, 401) == %{"message" => "unidentified"}
   end
 end

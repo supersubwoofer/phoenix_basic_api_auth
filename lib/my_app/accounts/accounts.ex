@@ -27,9 +27,19 @@ defmodule MyApp.Accounts do
     end
   end
 
-  def create_user(attrs \\ %{}) do
+  def create_user(user_params \\ %{}) do
     %User{}
-    |> User.changeset(attrs)
+    |> User.changeset(user_params)
     |> Repo.insert()
+  end
+  
+  def delete_user(%User{} = user) do
+    Repo.delete(user)
+  end
+
+  def update_user(%User{} = user, user_params) do
+    user
+    |> User.changeset(user_params)
+    |> Repo.update()
   end
 end

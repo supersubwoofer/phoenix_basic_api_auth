@@ -31,9 +31,8 @@ defmodule MyAppWeb.Router do
     end
 
     pipe_through :authenticated
-   
-    resources "/users", UserController, only: [:index]
-    resources "/users", UserController, only: [:show]
+
+    resources "/users", UserController, except: [:new, :edit]
   end
 
 end

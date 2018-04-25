@@ -14,7 +14,8 @@ defmodule MyAppWeb.UserView do
   def user_json(user) do
     %{
       email: user.email,
-      encrypted_password: user.encrypted_password
+      encrypted_password: user.encrypted_password,
+      permissions: user.permissions
     }
   end
 end
