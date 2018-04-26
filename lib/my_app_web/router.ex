@@ -31,9 +31,10 @@ defmodule MyAppWeb.Router do
     end
 
     pipe_through :authenticated
+    
     scope "/users" do
+      resources "/current", CurrentUserController, except: [:new, :edit, :create, :delete]
       resources "/", UserController, except: [:new, :edit]
-      resources "/current", CurrentUserController
     end
   end
 
