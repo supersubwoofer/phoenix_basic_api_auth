@@ -5,7 +5,7 @@ defmodule MyAppWeb.UserControllerTest do
   
   test "GET /api/users/ without permission", %{conn: conn} do
     user = insert(:user)
-    {:ok, token, _} = encode_and_sign(user, %{}, permissions:  %{default: []})
+    {:ok, token, _} = encode_and_sign(user, %{}, permissions: %{default: []})
 
     conn = conn
     |> put_req_header("authorization", "bearer #{token}")
@@ -16,7 +16,7 @@ defmodule MyAppWeb.UserControllerTest do
 
   test "GET /api/users/ renders a list of users", %{conn: conn} do
     user = insert(:user)
-    {:ok, token, _} = encode_and_sign(user, %{}, permissions: user.permissions)
+    {:ok, token, _} = encode_and_sign(user, %{}, permissions: %{"default" => ["read_users"]})
 
     conn = conn
     |> put_req_header("authorization", "bearer #{token}")
@@ -38,7 +38,7 @@ defmodule MyAppWeb.UserControllerTest do
 
   test "GET /api/users/:show renders a single user", %{conn: conn} do
     user = insert(:user)
-    {:ok, token, _} = encode_and_sign(user, %{}, permissions: user.permissions)
+    {:ok, token, _} = encode_and_sign(user, %{}, permissions: %{"default" => ["read_users"]})
 
     conn = conn
     |> put_req_header("authorization", "bearer #{token}")
