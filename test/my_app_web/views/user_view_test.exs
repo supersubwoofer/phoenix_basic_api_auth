@@ -10,7 +10,8 @@ defmodule MyAppWeb.UserViewTest do
 
     assert rendered_user == %{
       email: user.email,
-      encrypted_password: user.encrypted_password
+      encrypted_password: user.encrypted_password,
+      permissions: user.permissions
     }
   end
 

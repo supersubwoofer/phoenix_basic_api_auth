@@ -12,7 +12,7 @@ defmodule MyApp.Factory do
     %User{
       email: "unique@email",
       encrypted_password: %PasswordFactory{}.encrypted_password,
-      password: nil
+      permissions: %{"default" => ["read_users", "manage_users"]}
     }
   end
 end
