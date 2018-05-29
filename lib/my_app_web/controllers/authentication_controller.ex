@@ -1,31 +1,31 @@
-  defmodule MyAppWeb.AuthenticationController do
-    use MyAppWeb, :controller
+defmodule MyAppWeb.AuthenticationController do
+  use MyAppWeb, :controller
 
-    alias MyApp.Accounts
+  alias MyApp.Accounts
 
-    plug Ueberauth
+  plug(Ueberauth)
 
-    def identity_callback(%{assigns: %{ueberauth_auth: auth}} = conn, _params) do
-      unique_email = auth.uid
-      password = auth.credentials.other.password
-      handle_user_conn(Accounts.get_user_by_email_and_password(unique_email, password), conn)
-    end
+  def identity_callback(%{assigns: %{ueberauth_auth: auth}} = conn, _params) do
+    unique_email = auth.uid
+    password = auth.credentials.other.password
+    handle_user_conn(Accounts.get_user_by_email_and_password(unique_email, password), conn)
+  end
 
-    defp handle_user_conn(user, conn) do
-      case user do
-        {:ok, user} ->
-          {:ok, jwt, _full_claims} = 
+  defp handle_user_conn(user, conn) do
+    case user do
+      {:ok, user} ->
+        {:ok, jwt, _full_claims} =
           Accounts.Guardian.encode_and_sign(user, %{}, permissions: user.permissions)
 
-          conn
-          |> put_resp_header("authorization", "Bearer #{jwt}")
-          |> json(%{token: jwt})
+        conn
+        |> put_resp_header("authorization", "Bearer #{jwt}")
+        |> json(%{token: jwt})
 
-        # Handle our own error to keep it generic
-        {:error, _reason} ->
-          conn
-          |> put_status(401)
-          |> json(%{message: "unidentified"})
-      end
+      # Handle our own error to keep it generic
+      {:error, _reason} ->
+        conn
+        |> put_status(401)
+        |> json(%{message: "unidentified"})
     end
   end
+end

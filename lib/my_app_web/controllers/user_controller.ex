@@ -2,18 +2,22 @@ defmodule MyAppWeb.UserController do
   use MyAppWeb, :controller
   alias MyApp.Accounts
   alias MyApp.Accounts.User
-  
-  plug Guardian.Permissions.Bitwise, ensure: %{default: [:read_users]}
-  plug Guardian.Permissions.Bitwise, [ensure: %{default: [:manage_users]}] when action in [:create, :update, :delete]
+
+  plug(Guardian.Permissions.Bitwise, ensure: %{default: [:read_users]})
+
+  plug(
+    Guardian.Permissions.Bitwise,
+    [ensure: %{default: [:manage_users]}] when action in [:create, :update, :delete]
+  )
 
   def index(conn, _params) do
     users = Accounts.list_users()
-    render conn, "index.json", users: users
+    render(conn, "index.json", users: users)
   end
 
   def show(conn, %{"id" => email}) do
     user = Accounts.get_user_by_email(email)
-    render conn, "show.json", user: user
+    render(conn, "show.json", user: user)
   end
 
   def create(conn, %{"user" => user_params}) do
@@ -27,6 +31,7 @@ defmodule MyAppWeb.UserController do
 
   def update(conn, %{"id" => email, "user" => user_params}) do
     user = Accounts.get_user_by_email(email)
+
     with {:ok, %User{} = user} <- Accounts.update_user(user, user_params) do
       render(conn, "show.json", user: user)
     end
@@ -34,6 +39,7 @@ defmodule MyAppWeb.UserController do
 
   def delete(conn, %{"id" => email}) do
     user = Accounts.get_user_by_email(email)
+
     with {:ok, %User{} = user} <- Accounts.delete_user(user) do
       render(conn, "show.json", user: user)
     end

@@ -1,7 +1,7 @@
 defmodule MyApp.Accounts do
   alias MyApp.Repo
   alias MyApp.Accounts.User
-  
+
   def list_users do
     Repo.all(User)
   end
@@ -17,12 +17,12 @@ defmodule MyApp.Accounts do
 
   def get_user_by_email_and_password(email, password) do
     with %User{} = user <- get_user_by_email(email),
-          true <- Comeonin.Pbkdf2.checkpw(password, user.encrypted_password) do
+         true <- Comeonin.Pbkdf2.checkpw(password, user.encrypted_password) do
       {:ok, user}
     else
       _ ->
         # Help to mitigate timing attacks
-        Comeonin.Pbkdf2.dummy_checkpw
+        Comeonin.Pbkdf2.dummy_checkpw()
         {:error, :unauthenticated}
     end
   end
@@ -32,7 +32,7 @@ defmodule MyApp.Accounts do
     |> User.changeset(user_params)
     |> Repo.insert()
   end
-  
+
   def delete_user(%User{} = user) do
     Repo.delete(user)
   end

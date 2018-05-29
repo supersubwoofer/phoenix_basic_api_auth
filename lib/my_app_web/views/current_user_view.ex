@@ -1,6 +1,6 @@
 defmodule MyAppWeb.CurrentUserView do
   use MyAppWeb, :view
-  
+
   def render("show.json", %{user: user}) do
     %{user: user_json(user)}
   end

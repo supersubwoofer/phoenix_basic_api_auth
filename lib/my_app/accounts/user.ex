@@ -4,10 +4,10 @@ defmodule MyApp.Accounts.User do
   alias MyApp.Accounts.User
 
   schema "users" do
-    field :email, :string
-    field :encrypted_password, :string
-    field :password, :string, virtual: true
-    field :permissions, :map
+    field(:email, :string)
+    field(:encrypted_password, :string)
+    field(:password, :string, virtual: true)
+    field(:permissions, :map)
 
     timestamps()
   end
@@ -18,7 +18,7 @@ defmodule MyApp.Accounts.User do
   @doc """
   Builds a changeset based on the `struct` and `params`.
   """
-  def changeset(%User{}=user, params \\ %{}) do
+  def changeset(%User{} = user, params \\ %{}) do
     user
     |> cast(params, @required_fields, @optional_fields)
     |> validate_format(:email, ~r/@/)
@@ -32,6 +32,7 @@ defmodule MyApp.Accounts.User do
     case current_changeset do
       %Ecto.Changeset{valid?: true, changes: %{password: password}} ->
         put_change(current_changeset, :encrypted_password, Comeonin.Pbkdf2.hashpwsalt(password))
+
       _ ->
         current_changeset
     end
