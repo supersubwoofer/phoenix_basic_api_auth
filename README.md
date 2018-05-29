@@ -24,11 +24,11 @@ localhost:4000/api/auth/identity/callback \
 -H 'content-type: application/json' \
 -d '{"user": {"email": "admin@somedomain.com", "password": "qweqweqwe"}}'
 
-2. response
+2. response \
 {"token":"issued_token"}%
 
 3. users request
-curl \                                                                                                          [21:14:03]
+> curl \                                                                                                          [21:14:03]
 localhost:4000/api/users \
 -H 'content-type: application/json' \
 -H 'authorization: bearer issued_token'
