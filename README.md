@@ -26,7 +26,7 @@ localhost:4000/api/auth/identity/callback \
 2. response
 > {"token":"issued_token"}%
 
-3. users request
+3. users request, copy issued_token from step 2 to authorization header
 > curl localhost:4000/api/users \
 -H 'content-type: application/json' \
 -H 'authorization: bearer issued_token'
