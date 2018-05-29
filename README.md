@@ -15,6 +15,24 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
 
+## Use the API
+
+1. authentication request 
+> curl \                                                                                                          [21:08:21]
+-XPOST \
+localhost:4000/api/auth/identity/callback \
+-H 'content-type: application/json' \
+-d '{"user": {"email": "admin@somedomain.com", "password": "qweqweqwe"}}'
+
+2. response
+{"token":"issued_token"}%
+
+3. users request
+curl \                                                                                                          [21:14:03]
+localhost:4000/api/users \
+-H 'content-type: application/json' \
+-H 'authorization: bearer issued_token'
+
 ## Roadmap
 
 Setup authentication and access control
@@ -39,7 +57,7 @@ Setup authentication and access control
 
 3. Authorize resources access credentials
     1. Apply Guardian.Permissions.Bitwise to control resources access
-    2. Todo - Rewrite Old tests. Old tests do not work after access control
+    2. Rewrite Old tests. Old tests do not work after access control
 
 ## Reference
 
