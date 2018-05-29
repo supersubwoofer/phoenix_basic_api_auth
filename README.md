@@ -18,8 +18,7 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
 ## Use the API
 
 1. authentication request 
-> curl \                                                                                                          [21:08:21]
--XPOST \
+> curl -XPOST \
 localhost:4000/api/auth/identity/callback \
 -H 'content-type: application/json' \
 -d '{"user": {"email": "admin@somedomain.com", "password": "qweqweqwe"}}'
@@ -28,8 +27,7 @@ localhost:4000/api/auth/identity/callback \
 > {"token":"issued_token"}%
 
 3. users request
-> curl \                                                                                                          [21:14:03]
-localhost:4000/api/users \
+> curl localhost:4000/api/users \
 -H 'content-type: application/json' \
 -H 'authorization: bearer issued_token'
 
