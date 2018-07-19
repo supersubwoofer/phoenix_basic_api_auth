@@ -10,7 +10,8 @@ defmodule MyAppWeb.Router do
   end
 
   pipeline :api do
-    plug(:accepts, ["json"])
+    plug CORSPlug, origin: "http://localhost:5000"
+    plug(:accepts, ["json"])    
   end
 
   pipeline :authenticated do

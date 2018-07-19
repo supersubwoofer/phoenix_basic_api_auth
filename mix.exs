@@ -47,7 +47,8 @@ defmodule MyApp.Mixfile do
       {:poison, "~> 3.1"},
       {:ueberauth, "~> 0.5.0"},
       {:ueberauth_identity, "~> 0.2.3"},
-      {:guardian, "~> 1.0"}
+      {:guardian, "~> 1.0"},
+      {:cors_plug, "~> 1.5"}
     ]
   end
 
