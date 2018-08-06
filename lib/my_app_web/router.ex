@@ -30,6 +30,7 @@ defmodule MyAppWeb.Router do
 
     scope "/auth" do
       post("/identity/callback", AuthenticationController, :identity_callback)
+      options("/identity/callback", AuthenticationController, :identity_callback)
     end
 
     pipe_through(:authenticated)
