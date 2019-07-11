@@ -16,5 +16,5 @@ config :my_app, MyApp.Repo,
   password: "postgres",
   database: "my_auth_app_test",
   hostname: "localhost",
-  port: 5433,
+  port: 5432,
   pool: Ecto.Adapters.SQL.Sandbox

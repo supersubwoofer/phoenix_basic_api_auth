@@ -10,7 +10,7 @@ config :my_app, MyAppWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
-  check_origin: false,
+  check_origin: true,
   watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
                     cd: Path.expand("../assets", __DIR__)]]
 
@@ -55,5 +55,5 @@ config :my_app, MyApp.Repo,
   password: "postgres",
   database: "my_auth_app_dev",
   hostname: "localhost",
-  port: 5433,
+  port: 5432,
   pool_size: 10
